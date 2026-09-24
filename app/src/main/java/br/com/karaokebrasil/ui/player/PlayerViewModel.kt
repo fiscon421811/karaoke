@@ -1,6 +1,7 @@
 package br.com.karaokebrasil.ui.player
 
 import android.app.Application
+import android.content.Context
 import android.os.SystemClock
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.SavedStateHandle
@@ -8,7 +9,12 @@ import androidx.lifecycle.viewModelScope
 import androidx.media3.common.MediaItem
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
+import androidx.annotation.OptIn
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.audio.AudioSink
+import androidx.media3.exoplayer.audio.DefaultAudioSink
 import br.com.karaokebrasil.KaraokeApp
 import br.com.karaokebrasil.data.Musica
 import br.com.karaokebrasil.letra.Letra
@@ -33,12 +39,15 @@ data class EstadoPlayer(
     val duracaoMs: Long = 0,
     val terminou: Boolean = false,
     val proximaNaFila: Musica? = null,
+    /** Voz original removida do áudio (efeito karaokê). */
+    val semVoz: Boolean = true,
 )
 
 /**
  * Controla a reprodução de uma música. Com áudio, o tempo vem do ExoPlayer;
  * sem áudio (modo demonstração), um relógio interno avança a letra.
  */
+@OptIn(UnstableApi::class)
 class PlayerViewModel(
     application: Application,
     savedStateHandle: SavedStateHandle,
@@ -51,6 +60,8 @@ class PlayerViewModel(
     val estado: StateFlow<EstadoPlayer> = _estado.asStateFlow()
 
     private var player: ExoPlayer? = null
+
+    private val removedorDeVoz = RemovedorDeVoz().apply { ativo = true }
 
     // Relógio do modo demonstração.
     private var baseMs = 0L
@@ -66,7 +77,7 @@ class PlayerViewModel(
                 musica?.let(app.fonteDeMidia::carregarLetra) to app.fonteDeMidia.uriDoAudio(codigo)
             }
             if (uriAudio != null) {
-                player = ExoPlayer.Builder(app).build().apply {
+                player = ExoPlayer.Builder(app, fabricaComRemovedorDeVoz()).build().apply {
                     addListener(object : Player.Listener {
                         override fun onPlayerError(error: PlaybackException) = usarRelogioSemAudio()
                     })
@@ -101,6 +112,24 @@ class PlayerViewModel(
         inicioRealMs = SystemClock.elapsedRealtime()
         relogioRodando = _estado.value.tocando
         _estado.update { it.copy(temAudio = false, duracaoMs = it.letra?.fimMs ?: 0L) }
+    }
+
+    /** Liga/desliga a voz original do MP3 (só tem efeito com áudio estéreo). */
+    fun alternarVoz() {
+        removedorDeVoz.ativo = !removedorDeVoz.ativo
+        _estado.update { it.copy(semVoz = removedorDeVoz.ativo) }
+    }
+
+    private fun fabricaComRemovedorDeVoz() = object : DefaultRenderersFactory(app) {
+        override fun buildAudioSink(
+            context: Context,
+            enableFloatOutput: Boolean,
+            enableAudioTrackPlaybackParams: Boolean,
+        ): AudioSink = DefaultAudioSink.Builder(context)
+            .setEnableFloatOutput(enableFloatOutput)
+            .setEnableAudioTrackPlaybackParams(enableAudioTrackPlaybackParams)
+            .setAudioProcessors(arrayOf(removedorDeVoz))
+            .build()
     }
 
     fun alternarPausa() {

@@ -79,6 +79,7 @@ fun PlayerScreen(
                     Key.DirectionLeft, Key.MediaRewind -> vm.avancar(-SALTO_MS)
                     Key.DirectionRight, Key.MediaFastForward -> vm.avancar(SALTO_MS)
                     Key.DirectionDown, Key.MediaNext -> if (estado.proximaNaFila != null) onProxima()
+                    Key.DirectionUp -> vm.alternarVoz()
                     else -> return@onKeyEvent false
                 }
                 true
@@ -117,6 +118,13 @@ private fun Cabecalho(estado: EstadoPlayer) {
             Text("Nº ${musica.codigo}", fontSize = 22.sp, color = Destaque, fontWeight = FontWeight.Bold)
             if (!estado.temAudio && estado.letra != null) {
                 Text("Modo demonstração (sem áudio)", fontSize = 14.sp, color = TextoSecundario)
+            }
+            if (estado.temAudio) {
+                Text(
+                    if (estado.semVoz) "🎤 Voz original: REMOVIDA" else "🗣 Voz original: LIGADA",
+                    fontSize = 14.sp,
+                    color = TextoSecundario,
+                )
             }
         }
     }
@@ -223,7 +231,7 @@ private fun Rodape(estado: EstadoPlayer, modifier: Modifier = Modifier) {
             )
         }
         Text(
-            "OK: pausar/continuar  •  ◀ ▶: voltar/avançar 5s  •  ▼: próxima da fila  •  Voltar: sair",
+            "OK: pausar  •  ◀ ▶: ±5s  •  ▲: voz original liga/desliga  •  ▼: próxima da fila  •  Voltar: sair",
             fontSize = 14.sp,
             color = TextoSecundario.copy(alpha = 0.7f),
             modifier = Modifier.padding(top = 4.dp),

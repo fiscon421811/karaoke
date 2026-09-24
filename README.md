@@ -24,6 +24,7 @@ com banco de músicas brasileiras organizado por gênero.
   |---|---|
   | OK / Play-Pause | pausar / continuar |
   | ◀ / ▶ | voltar / avançar 5 s |
+  | ▲ | voz original liga/desliga |
   | ▼ / Próxima | pular para a próxima da fila |
   | Voltar | sair |
 
@@ -36,6 +37,30 @@ Ao escolher uma música, o app oferece:
   que cuidam dos direitos.
 - **🎤 Cantar agora**: o player do próprio app, com letra sincronizada. Aparece quando a música
   tem letra (`.lrc`) disponível (selo **♪ LETRA** no cartão).
+
+## Seus MP3 com letra sincronizada (importador)
+
+O app não traz áudios de músicas comerciais (são protegidos por direitos autorais), mas
+importa os **seus** MP3 e já junta cada um com a letra sincronizada certa:
+
+```bash
+pip install mutagen
+python3 ferramentas/importar_mp3.py "C:/Users/edson/Music/Karaoke" --adb
+```
+
+Para cada MP3, o script:
+
+1. lê título/artista (tags ID3 ou nome `Artista - Título.mp3`) e acha a música no catálogo;
+2. copia o áudio como `<numero>.mp3`;
+3. baixa do LRCLIB a letra sincronizada da gravação **com a mesma duração** do seu MP3;
+4. com `--adb`, envia tudo para a TV (`adb connect <ip-da-tv>` antes).
+
+Os arquivos ficam em `minhas_musicas/` (fora do Git). **Não publique MP3 comerciais no
+repositório**, que é público.
+
+No player, a **voz original é removida** do MP3 (efeito karaokê: subtrai um canal estéreo do
+outro). A tecla **▲** liga/desliga a voz, útil como "voz guia". O efeito funciona melhor em
+gravações com a voz centralizada; um pouco de eco da voz pode permanecer.
 
 ## De onde vêm as letras
 
