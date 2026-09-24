@@ -67,6 +67,10 @@ class KaraokeViewModel(application: Application) : AndroidViewModel(application)
         viewModelScope.launch { repositorio.alternarFavorita(musica.codigo) }
     }
 
+    fun registrarExecucao(musica: Musica) {
+        viewModelScope.launch { repositorio.registrarExecucao(musica.codigo) }
+    }
+
     fun adicionarNaFila(musica: Musica) = fila.adicionar(musica)
     fun removerDaFila(indice: Int) = fila.removerEm(indice)
     fun limparFila() = fila.limpar()

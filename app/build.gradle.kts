@@ -15,6 +15,14 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0.0"
+
+        // Servidor de onde o app baixa letras (.lrc) e áudios. Precisa terminar com "/".
+        // Por padrão usa a pasta servidor/ deste repositório no GitHub.
+        buildConfigField(
+            "String",
+            "SERVIDOR_MIDIA_URL",
+            "\"https://raw.githubusercontent.com/fiscon421811/karaoke/HEAD/servidor/\"",
+        )
     }
 
     buildTypes {
@@ -32,6 +40,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 

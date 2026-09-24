@@ -34,6 +34,7 @@ fun OpcoesMusicaDialog(
     musica: Musica,
     temLetra: Boolean,
     onCantar: () -> Unit,
+    onCantarNoYoutube: () -> Unit,
     onAdicionarNaFila: () -> Unit,
     onAlternarFavorita: () -> Unit,
     onFechar: () -> Unit,
@@ -58,15 +59,24 @@ fun OpcoesMusicaDialog(
             Text(text = musica.artista, color = TextoSecundario, fontSize = 18.sp)
             if (!temLetra) {
                 Text(
-                    text = "Letra ainda não instalada para esta música.",
+                    text = "Letra não disponível no app — cante com um vídeo de karaokê do YouTube.",
                     color = TextoSecundario,
                     fontSize = 13.sp,
                     textAlign = TextAlign.Center,
                 )
             }
             Spacer(Modifier.height(8.dp))
-            Button(onClick = onCantar, modifier = Modifier.fillMaxWidth().focusRequester(foco)) {
-                Text("🎤  Cantar agora")
+            if (temLetra) {
+                Button(onClick = onCantar, modifier = Modifier.fillMaxWidth().focusRequester(foco)) {
+                    Text("🎤  Cantar agora")
+                }
+                OutlinedButton(onClick = onCantarNoYoutube, modifier = Modifier.fillMaxWidth()) {
+                    Text("▶  Cantar com vídeo do YouTube")
+                }
+            } else {
+                Button(onClick = onCantarNoYoutube, modifier = Modifier.fillMaxWidth().focusRequester(foco)) {
+                    Text("▶  Cantar com vídeo do YouTube")
+                }
             }
             OutlinedButton(onClick = onAdicionarNaFila, modifier = Modifier.fillMaxWidth()) {
                 Text("➕  Adicionar à fila")

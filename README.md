@@ -24,26 +24,42 @@ com banco de músicas brasileiras organizado por gênero.
   | ▼ / Próxima | pular para a próxima da fila |
   | Voltar | sair |
 
-## Letras e áudios
+## Como cantar
 
-Por direitos autorais, o app **não traz letras nem áudios de músicas protegidas** — só os metadados
-(título/artista). As 8 primeiras cantigas de **Folclore & Infantil** (`12001`–`12008`, domínio público)
-já vêm com letra sincronizada para testar.
+Ao escolher uma música, o app oferece:
 
-Para adicionar letra/áudio de qualquer música, use o **número** dela como nome do arquivo:
+- **▶ Cantar com vídeo do YouTube**: funciona para **todas** as músicas. Abre o app do YouTube
+  já buscando "<título> <artista> karaokê". Os vídeos são dos canais de karaokê do YouTube,
+  que cuidam dos direitos.
+- **🎤 Cantar agora**: o player do próprio app, com letra sincronizada. Aparece quando a música
+  tem letra (`.lrc`) disponível (selo **♪ LETRA** no cartão).
 
-- `<numero>.lrc` — letra sincronizada
-- `<numero>.mp3` (ou `.m4a`, `.ogg`, `.wav`) — playback
+## Letras e áudios no servidor
 
-E coloque em **um** destes lugares:
+O app procura a letra/áudio de cada música, pelo **número**, nesta ordem:
 
-1. **No projeto** (vai junto no APK): `app/src/main/assets/letras/` e `app/src/main/assets/audio/`
-2. **Na TV, sem recompilar**:
-   ```bash
-   adb push 1001.lrc 1001.mp3 /sdcard/Android/data/br.com.karaokebrasil/files/karaoke/
-   ```
+1. Na TV: `/sdcard/Android/data/br.com.karaokebrasil/files/karaoke/<numero>.lrc|.mp3`
+   (copie com `adb push`)
+2. Dentro do APK: `app/src/main/assets/letras/` e `app/src/main/assets/audio/`
+3. **No servidor**: a pasta [`servidor/`](servidor/) deste repositório no GitHub, lida pela
+   internet. O endereço fica em `SERVIDOR_MIDIA_URL`, no `app/build.gradle.kts`. Pode ser trocado
+   por qualquer site seu (precisa terminar com `/`).
 
-Exemplo de `.lrc`:
+Para publicar músicas no servidor, **sem recompilar o app**:
+
+1. Coloque `servidor/letras/<numero>.lrc` e/ou `servidor/audio/<numero>.mp3`.
+   Para áudios hospedados em outro site, liste as URLs em `servidor/links_externos.json`:
+   `{"1001": {"audio": "https://meusite.com/evidencias.mp3"}}`
+2. Rode `python3 ferramentas/gerar_indice_servidor.py` (atualiza `servidor/midias.json`).
+3. Faça commit e push. Na próxima abertura, o app já mostra e toca as músicas novas.
+   O áudio toca por streaming; a letra fica em cache para uso sem internet.
+
+> ⚠️ **Direitos autorais**: letras e playbacks de músicas comerciais são protegidos. Publique no
+> servidor só o que você tem direito de distribuir: cantigas de domínio público, gravações
+> próprias ou conteúdo licenciado (ex.: comprado de distribuidoras de karaokê). As 8 cantigas de
+> **Folclore & Infantil** (`12001`–`12008`) já estão no servidor como exemplo.
+
+Exemplo de `.lrc` (dá para criar no *LRC Maker* ou em outros editores de letra sincronizada):
 
 ```
 [ti:Ciranda, Cirandinha]
@@ -51,8 +67,6 @@ Exemplo de `.lrc`:
 [00:05.00]Ciranda, cirandinha
 [00:08.50]Vamos todos cirandar
 ```
-
-Arquivos `.lrc` podem ser criados em editores como o *LRC Maker* ou baixados de fontes licenciadas.
 
 ## Adicionar músicas ao catálogo
 
@@ -107,7 +121,7 @@ app/src/main/java/br/com/karaokebrasil/
 ├── KaraokeApp.kt            # Application: cria banco, repositório e fila
 ├── MainActivity.kt
 ├── data/                    # Room: Musica, MusicaDao, KaraokeDatabase, Genero, fila
-├── letra/                   # LrcParser, Letra, FonteDeMidia (localiza .lrc e áudio)
+├── letra/                   # LrcParser, Letra, FonteDeMidia (local, assets ou servidor)
 └── ui/
     ├── KaraokeNavHost.kt    # navegação + diálogo de opções da música
     ├── KaraokeViewModel.kt  # catálogo, busca, favoritas, fila
@@ -117,7 +131,8 @@ app/src/main/assets/
 ├── catalogo.json            # banco de músicas (gerado pelo script)
 ├── letras/                  # <numero>.lrc
 └── audio/                   # <numero>.mp3
-ferramentas/gerar_catalogo.py
+servidor/                    # letras/áudios servidos pela internet + midias.json
+ferramentas/                 # scripts Python: catálogo e índice do servidor
 ```
 
 ## Tecnologias

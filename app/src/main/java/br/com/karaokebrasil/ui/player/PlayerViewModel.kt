@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import androidx.media3.common.MediaItem
+import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import br.com.karaokebrasil.KaraokeApp
@@ -66,6 +67,9 @@ class PlayerViewModel(
             }
             if (uriAudio != null) {
                 player = ExoPlayer.Builder(app).build().apply {
+                    addListener(object : Player.Listener {
+                        override fun onPlayerError(error: PlaybackException) = usarRelogioSemAudio()
+                    })
                     setMediaItem(MediaItem.fromUri(uriAudio))
                     prepare()
                 }
@@ -86,6 +90,17 @@ class PlayerViewModel(
                 _estado.update { it.copy(proximaNaFila = fila.firstOrNull()) }
             }
         }
+    }
+
+    /** Áudio falhou (ex.: sem internet): segue só com a letra, do ponto onde estava. */
+    private fun usarRelogioSemAudio() {
+        val posicao = player?.currentPosition ?: 0L
+        player?.release()
+        player = null
+        baseMs = posicao
+        inicioRealMs = SystemClock.elapsedRealtime()
+        relogioRodando = _estado.value.tocando
+        _estado.update { it.copy(temAudio = false, duracaoMs = it.letra?.fimMs ?: 0L) }
     }
 
     fun alternarPausa() {

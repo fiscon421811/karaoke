@@ -1,0 +1,3 @@
+Coloque aqui os playbacks nomeados pelo número da música (1001.mp3, 7003.m4a...)
+e rode: python3 ferramentas/gerar_indice_servidor.py
+Use apenas áudios que você tem direito de distribuir.

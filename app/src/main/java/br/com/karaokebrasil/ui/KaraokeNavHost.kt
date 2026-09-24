@@ -1,11 +1,13 @@
 package br.com.karaokebrasil.ui
 
+import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -17,6 +19,7 @@ import br.com.karaokebrasil.data.Genero
 import br.com.karaokebrasil.data.Musica
 import br.com.karaokebrasil.ui.busca.BuscaScreen
 import br.com.karaokebrasil.ui.componentes.OpcoesMusicaDialog
+import br.com.karaokebrasil.ui.componentes.abrirKaraokeNoYoutube
 import br.com.karaokebrasil.ui.fila.FilaScreen
 import br.com.karaokebrasil.ui.genero.FavoritasScreen
 import br.com.karaokebrasil.ui.genero.GeneroScreen
@@ -38,6 +41,7 @@ private object Rotas {
 @Composable
 fun KaraokeNavHost() {
     val nav = rememberNavController()
+    val context = LocalContext.current
     // Um único ViewModel de catálogo, compartilhado por todas as telas.
     val vm: KaraokeViewModel = viewModel()
     val comLetra by vm.comLetra.collectAsState()
@@ -91,6 +95,13 @@ fun KaraokeNavHost() {
             onCantar = {
                 selecionada = null
                 nav.cantar(musica)
+            },
+            onCantarNoYoutube = {
+                selecionada = null
+                vm.registrarExecucao(musica)
+                if (!abrirKaraokeNoYoutube(context, musica)) {
+                    Toast.makeText(context, "Instale o app do YouTube para cantar esta música.", Toast.LENGTH_LONG).show()
+                }
             },
             onAdicionarNaFila = {
                 vm.adicionarNaFila(musica)
