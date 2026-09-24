@@ -86,6 +86,12 @@ Passos:
    com **depuração ADB** ativada (`adb connect <ip-da-tv>`).
 5. Selecione a configuração **app** e clique em **Run ▶**.
 
+> **Erro `jlink executable ... jbr\bin\jlink.exe does not exist`?** O Gradle está usando o Java
+> embutido do IntelliJ, que não tem `jlink`. O projeto já pede um JDK 17 via *toolchain* (baixado
+> automaticamente), mas se o erro persistir vá em *Settings → Build, Execution, Deployment →
+> Build Tools → Gradle → Gradle JVM* e escolha um JDK completo (ex.: *Download JDK… → Eclipse
+> Temurin 17*). Depois, *File → Sync Project with Gradle Files*.
+
 Pela linha de comando:
 
 ```bash

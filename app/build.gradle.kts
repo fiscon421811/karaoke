@@ -29,13 +29,16 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
 
     buildFeatures {
         compose = true
     }
+}
+
+// Compila com um JDK 17 completo, independente do Java que roda o Gradle
+// (o JBR embutido no IntelliJ não traz o jlink exigido pelo plugin Android).
+kotlin {
+    jvmToolchain(17)
 }
 
 ksp {
