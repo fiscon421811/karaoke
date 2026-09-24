@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Banner exibido no launcher da Android TV (proporção 16:9, 320x180dp). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="180dp"
+    android:viewportWidth="320"
+    android:viewportHeight="180">
+    <path
+        android:fillColor="#0B0B1A"
+        android:pathData="M0,0h320v180h-320z" />
+    <!-- Faixas verde e amarela -->
+    <path
+        android:fillColor="#009C3B"
+        android:pathData="M0,150h320v30h-320z" />
+    <path
+        android:fillColor="#FFDF00"
+        android:pathData="M0,142h320v8h-320z" />
+    <!-- Microfone -->
+    <path
+        android:fillColor="#FFC300"
+        android:pathData="M160,24a18,18 0,0 1,18 18v26a18,18 0,0 1,-36 0v-26a18,18 0,0 1,18 -18z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M134,64h5a21,21 0,0 0,42 0h5a26,26 0,0 1,-23.5 25.9v14.1h13v5h-31v-5h13v-14.1a26,26 0,0 1,-23.5 -25.9z" />
+    <!-- Notas musicais -->
+    <path
+        android:fillColor="#00B4D8"
+        android:pathData="M84,40v34.5a8,8 0,1 0,4 6.9v-31.4h14v-10z" />
+    <path
+        android:fillColor="#E63946"
+        android:pathData="M226,46v30.5a8,8 0,1 0,4 6.9v-27.4h14v-10z" />
+</vector>

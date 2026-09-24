@@ -1,0 +1,998 @@
+[
+ {
+  "codigo": 1001,
+  "titulo": "Evidências",
+  "artista": "Chitãozinho & Xororó",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1002,
+  "titulo": "Fio de Cabelo",
+  "artista": "Chitãozinho & Xororó",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1003,
+  "titulo": "Página de Amigos",
+  "artista": "Chitãozinho & Xororó",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1004,
+  "titulo": "É o Amor",
+  "artista": "Zezé Di Camargo & Luciano",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1005,
+  "titulo": "No Dia em Que Eu Saí de Casa",
+  "artista": "Zezé Di Camargo & Luciano",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1006,
+  "titulo": "Pense em Mim",
+  "artista": "Leandro & Leonardo",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1007,
+  "titulo": "Entre Tapas e Beijos",
+  "artista": "Leandro & Leonardo",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1008,
+  "titulo": "Telefone Mudo",
+  "artista": "Trio Parada Dura",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1009,
+  "titulo": "Tocando em Frente",
+  "artista": "Almir Sater",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1010,
+  "titulo": "Chalana",
+  "artista": "Almir Sater",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1011,
+  "titulo": "Boate Azul",
+  "artista": "Bruno & Marrone",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1012,
+  "titulo": "Camaro Amarelo",
+  "artista": "Munhoz & Mariano",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1013,
+  "titulo": "Ai Se Eu Te Pego",
+  "artista": "Michel Teló",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1014,
+  "titulo": "Infiel",
+  "artista": "Marília Mendonça",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1015,
+  "titulo": "Supera",
+  "artista": "Marília Mendonça",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1016,
+  "titulo": "Cuida Bem Dela",
+  "artista": "Henrique & Juliano",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1017,
+  "titulo": "Liberdade Provisória",
+  "artista": "Henrique & Juliano",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1018,
+  "titulo": "Tchê Tchê Rere",
+  "artista": "Gusttavo Lima",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1019,
+  "titulo": "Amo Noite e Dia",
+  "artista": "Jorge & Mateus",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 1020,
+  "titulo": "Chora, Me Liga",
+  "artista": "João Bosco & Vinícius",
+  "genero": "SERTANEJO"
+ },
+ {
+  "codigo": 2001,
+  "titulo": "Aquarela",
+  "artista": "Toquinho",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2002,
+  "titulo": "O Bêbado e a Equilibrista",
+  "artista": "Elis Regina",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2003,
+  "titulo": "Como Nossos Pais",
+  "artista": "Elis Regina",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2004,
+  "titulo": "Sozinho",
+  "artista": "Caetano Veloso",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2005,
+  "titulo": "O Leãozinho",
+  "artista": "Caetano Veloso",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2006,
+  "titulo": "Andar com Fé",
+  "artista": "Gilberto Gil",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2007,
+  "titulo": "Drão",
+  "artista": "Gilberto Gil",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2008,
+  "titulo": "Anunciação",
+  "artista": "Alceu Valença",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2009,
+  "titulo": "Chão de Giz",
+  "artista": "Zé Ramalho",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2010,
+  "titulo": "Admirável Gado Novo",
+  "artista": "Zé Ramalho",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2011,
+  "titulo": "Oceano",
+  "artista": "Djavan",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2012,
+  "titulo": "Flor de Lis",
+  "artista": "Djavan",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2013,
+  "titulo": "Mania de Você",
+  "artista": "Rita Lee",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2014,
+  "titulo": "Velha Infância",
+  "artista": "Tribalistas",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2015,
+  "titulo": "Travessia",
+  "artista": "Milton Nascimento",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2016,
+  "titulo": "Maria, Maria",
+  "artista": "Milton Nascimento",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2017,
+  "titulo": "O Que É, O Que É?",
+  "artista": "Gonzaguinha",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2018,
+  "titulo": "Ainda Bem",
+  "artista": "Vanessa da Mata",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2019,
+  "titulo": "Telegrama",
+  "artista": "Zeca Baleiro",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 2020,
+  "titulo": "Palpite",
+  "artista": "Vanessa Rangel",
+  "genero": "MPB"
+ },
+ {
+  "codigo": 3001,
+  "titulo": "Trem das Onze",
+  "artista": "Adoniran Barbosa",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3002,
+  "titulo": "Saudosa Maloca",
+  "artista": "Adoniran Barbosa",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3003,
+  "titulo": "Tiro ao Álvaro",
+  "artista": "Adoniran Barbosa",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3004,
+  "titulo": "O Mundo É um Moinho",
+  "artista": "Cartola",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3005,
+  "titulo": "As Rosas Não Falam",
+  "artista": "Cartola",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3006,
+  "titulo": "Alvorada",
+  "artista": "Cartola",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3007,
+  "titulo": "Canta, Canta, Minha Gente",
+  "artista": "Martinho da Vila",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3008,
+  "titulo": "Não Deixe o Samba Morrer",
+  "artista": "Alcione",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3009,
+  "titulo": "Sufoco",
+  "artista": "Alcione",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3010,
+  "titulo": "Coisinha do Pai",
+  "artista": "Beth Carvalho",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3011,
+  "titulo": "Vou Festejar",
+  "artista": "Beth Carvalho",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3012,
+  "titulo": "Deixa a Vida Me Levar",
+  "artista": "Zeca Pagodinho",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3013,
+  "titulo": "Verdade",
+  "artista": "Zeca Pagodinho",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3014,
+  "titulo": "Maneiras",
+  "artista": "Zeca Pagodinho",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3015,
+  "titulo": "O Show Tem Que Continuar",
+  "artista": "Fundo de Quintal",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 3016,
+  "titulo": "Pé na Areia",
+  "artista": "Diogo Nogueira",
+  "genero": "SAMBA"
+ },
+ {
+  "codigo": 4001,
+  "titulo": "Deixa Acontecer",
+  "artista": "Grupo Revelação",
+  "genero": "PAGODE"
+ },
+ {
+  "codigo": 4002,
+  "titulo": "Tá Escrito",
+  "artista": "Grupo Revelação",
+  "genero": "PAGODE"
+ },
+ {
+  "codigo": 4003,
+  "titulo": "Cheia de Manias",
+  "artista": "Raça Negra",
+  "genero": "PAGODE"
+ },
+ {
+  "codigo": 4004,
+  "titulo": "É Tarde Demais",
+  "artista": "Raça Negra",
+  "genero": "PAGODE"
+ },
+ {
+  "codigo": 4005,
+  "titulo": "Essa Tal Liberdade",
+  "artista": "Só Pra Contrariar",
+  "genero": "PAGODE"
+ },
+ {
+  "codigo": 4006,
+  "titulo": "Que Se Chama Amor",
+  "artista": "Só Pra Contrariar",
+  "genero": "PAGODE"
+ },
+ {
+  "codigo": 4007,
+  "titulo": "Marrom Bombom",
+  "artista": "Os Morenos",
+  "genero": "PAGODE"
+ },
+ {
+  "codigo": 4008,
+  "titulo": "Me Apaixonei Pela Pessoa Errada",
+  "artista": "Exaltasamba",
+  "genero": "PAGODE"
+ },
+ {
+  "codigo": 4009,
+  "titulo": "Tá Vendo Aquela Lua",
+  "artista": "Exaltasamba",
+  "genero": "PAGODE"
+ },
+ {
+  "codigo": 4010,
+  "titulo": "Cilada",
+  "artista": "Molejo",
+  "genero": "PAGODE"
+ },
+ {
+  "codigo": 4011,
+  "titulo": "Brincadeira de Criança",
+  "artista": "Molejo",
+  "genero": "PAGODE"
+ },
+ {
+  "codigo": 5001,
+  "titulo": "Asa Branca",
+  "artista": "Luiz Gonzaga",
+  "genero": "FORRO"
+ },
+ {
+  "codigo": 5002,
+  "titulo": "Xote das Meninas",
+  "artista": "Luiz Gonzaga",
+  "genero": "FORRO"
+ },
+ {
+  "codigo": 5003,
+  "titulo": "Olha pro Céu",
+  "artista": "Luiz Gonzaga",
+  "genero": "FORRO"
+ },
+ {
+  "codigo": 5004,
+  "titulo": "Sala de Reboco",
+  "artista": "Luiz Gonzaga",
+  "genero": "FORRO"
+ },
+ {
+  "codigo": 5005,
+  "titulo": "Esperando na Janela",
+  "artista": "Gilberto Gil",
+  "genero": "FORRO"
+ },
+ {
+  "codigo": 5006,
+  "titulo": "Xote da Alegria",
+  "artista": "Falamansa",
+  "genero": "FORRO"
+ },
+ {
+  "codigo": 5007,
+  "titulo": "Rindo à Toa",
+  "artista": "Falamansa",
+  "genero": "FORRO"
+ },
+ {
+  "codigo": 5008,
+  "titulo": "Morena Tropicana",
+  "artista": "Alceu Valença",
+  "genero": "FORRO"
+ },
+ {
+  "codigo": 5009,
+  "titulo": "Eu Só Quero um Xodó",
+  "artista": "Dominguinhos",
+  "genero": "FORRO"
+ },
+ {
+  "codigo": 5010,
+  "titulo": "De Volta pro Aconchego",
+  "artista": "Elba Ramalho",
+  "genero": "FORRO"
+ },
+ {
+  "codigo": 5011,
+  "titulo": "Tareco e Mariola",
+  "artista": "Flávio José",
+  "genero": "FORRO"
+ },
+ {
+  "codigo": 6001,
+  "titulo": "Festa",
+  "artista": "Ivete Sangalo",
+  "genero": "AXE"
+ },
+ {
+  "codigo": 6002,
+  "titulo": "Sorte Grande",
+  "artista": "Ivete Sangalo",
+  "genero": "AXE"
+ },
+ {
+  "codigo": 6003,
+  "titulo": "Canibal",
+  "artista": "Ivete Sangalo",
+  "genero": "AXE"
+ },
+ {
+  "codigo": 6004,
+  "titulo": "O Canto da Cidade",
+  "artista": "Daniela Mercury",
+  "genero": "AXE"
+ },
+ {
+  "codigo": 6005,
+  "titulo": "Swing da Cor",
+  "artista": "Daniela Mercury",
+  "genero": "AXE"
+ },
+ {
+  "codigo": 6006,
+  "titulo": "Beija-Flor",
+  "artista": "Timbalada",
+  "genero": "AXE"
+ },
+ {
+  "codigo": 6007,
+  "titulo": "Selva Branca",
+  "artista": "Chiclete com Banana",
+  "genero": "AXE"
+ },
+ {
+  "codigo": 6008,
+  "titulo": "Milla",
+  "artista": "Netinho",
+  "genero": "AXE"
+ },
+ {
+  "codigo": 6009,
+  "titulo": "Baianidade Nagô",
+  "artista": "Banda Mel",
+  "genero": "AXE"
+ },
+ {
+  "codigo": 6010,
+  "titulo": "Segura o Tchan",
+  "artista": "É o Tchan",
+  "genero": "AXE"
+ },
+ {
+  "codigo": 7001,
+  "titulo": "Pais e Filhos",
+  "artista": "Legião Urbana",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7002,
+  "titulo": "Tempo Perdido",
+  "artista": "Legião Urbana",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7003,
+  "titulo": "Eduardo e Mônica",
+  "artista": "Legião Urbana",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7004,
+  "titulo": "Faroeste Caboclo",
+  "artista": "Legião Urbana",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7005,
+  "titulo": "Exagerado",
+  "artista": "Cazuza",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7006,
+  "titulo": "Ideologia",
+  "artista": "Cazuza",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7007,
+  "titulo": "Pro Dia Nascer Feliz",
+  "artista": "Barão Vermelho",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7008,
+  "titulo": "Lanterna dos Afogados",
+  "artista": "Os Paralamas do Sucesso",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7009,
+  "titulo": "Meu Erro",
+  "artista": "Os Paralamas do Sucesso",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7010,
+  "titulo": "Epitáfio",
+  "artista": "Titãs",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7011,
+  "titulo": "Sonífera Ilha",
+  "artista": "Titãs",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7012,
+  "titulo": "Flores",
+  "artista": "Titãs",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7013,
+  "titulo": "Primeiros Erros",
+  "artista": "Capital Inicial",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7014,
+  "titulo": "Infinita Highway",
+  "artista": "Engenheiros do Hawaii",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7015,
+  "titulo": "Pelados em Santos",
+  "artista": "Mamonas Assassinas",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7016,
+  "titulo": "Mulher de Fases",
+  "artista": "Raimundos",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7017,
+  "titulo": "Anna Júlia",
+  "artista": "Los Hermanos",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7018,
+  "titulo": "Garota Nacional",
+  "artista": "Skank",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7019,
+  "titulo": "Vamos Fugir",
+  "artista": "Skank",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7020,
+  "titulo": "Do Seu Lado",
+  "artista": "Jota Quest",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 7021,
+  "titulo": "Fácil",
+  "artista": "Jota Quest",
+  "genero": "ROCK_NACIONAL"
+ },
+ {
+  "codigo": 8001,
+  "titulo": "Garota de Ipanema",
+  "artista": "Tom Jobim",
+  "genero": "BOSSA_NOVA"
+ },
+ {
+  "codigo": 8002,
+  "titulo": "Wave",
+  "artista": "Tom Jobim",
+  "genero": "BOSSA_NOVA"
+ },
+ {
+  "codigo": 8003,
+  "titulo": "Corcovado",
+  "artista": "Tom Jobim",
+  "genero": "BOSSA_NOVA"
+ },
+ {
+  "codigo": 8004,
+  "titulo": "Insensatez",
+  "artista": "Tom Jobim",
+  "genero": "BOSSA_NOVA"
+ },
+ {
+  "codigo": 8005,
+  "titulo": "Samba de Uma Nota Só",
+  "artista": "Tom Jobim",
+  "genero": "BOSSA_NOVA"
+ },
+ {
+  "codigo": 8006,
+  "titulo": "Águas de Março",
+  "artista": "Elis Regina & Tom Jobim",
+  "genero": "BOSSA_NOVA"
+ },
+ {
+  "codigo": 8007,
+  "titulo": "Chega de Saudade",
+  "artista": "João Gilberto",
+  "genero": "BOSSA_NOVA"
+ },
+ {
+  "codigo": 8008,
+  "titulo": "Desafinado",
+  "artista": "João Gilberto",
+  "genero": "BOSSA_NOVA"
+ },
+ {
+  "codigo": 8009,
+  "titulo": "O Barquinho",
+  "artista": "Nara Leão",
+  "genero": "BOSSA_NOVA"
+ },
+ {
+  "codigo": 8010,
+  "titulo": "Eu Sei Que Vou Te Amar",
+  "artista": "Vinicius de Moraes",
+  "genero": "BOSSA_NOVA"
+ },
+ {
+  "codigo": 8011,
+  "titulo": "Tarde em Itapoã",
+  "artista": "Vinicius de Moraes & Toquinho",
+  "genero": "BOSSA_NOVA"
+ },
+ {
+  "codigo": 8012,
+  "titulo": "Samba de Verão",
+  "artista": "Marcos Valle",
+  "genero": "BOSSA_NOVA"
+ },
+ {
+  "codigo": 9001,
+  "titulo": "Rap da Felicidade",
+  "artista": "Cidinho & Doca",
+  "genero": "FUNK"
+ },
+ {
+  "codigo": 9002,
+  "titulo": "Glamurosa",
+  "artista": "MC Marcinho",
+  "genero": "FUNK"
+ },
+ {
+  "codigo": 9003,
+  "titulo": "Show das Poderosas",
+  "artista": "Anitta",
+  "genero": "FUNK"
+ },
+ {
+  "codigo": 9004,
+  "titulo": "Vai Malandra",
+  "artista": "Anitta",
+  "genero": "FUNK"
+ },
+ {
+  "codigo": 9005,
+  "titulo": "Envolver",
+  "artista": "Anitta",
+  "genero": "FUNK"
+ },
+ {
+  "codigo": 9006,
+  "titulo": "Baile de Favela",
+  "artista": "MC João",
+  "genero": "FUNK"
+ },
+ {
+  "codigo": 9007,
+  "titulo": "Bum Bum Tam Tam",
+  "artista": "MC Fioti",
+  "genero": "FUNK"
+ },
+ {
+  "codigo": 9008,
+  "titulo": "Olha a Explosão",
+  "artista": "MC Kevinho",
+  "genero": "FUNK"
+ },
+ {
+  "codigo": 9009,
+  "titulo": "Tá Tranquilo, Tá Favorável",
+  "artista": "MC Bin Laden",
+  "genero": "FUNK"
+ },
+ {
+  "codigo": 10001,
+  "titulo": "Raridade",
+  "artista": "Anderson Freire",
+  "genero": "GOSPEL"
+ },
+ {
+  "codigo": 10002,
+  "titulo": "Ressuscita-me",
+  "artista": "Aline Barros",
+  "genero": "GOSPEL"
+ },
+ {
+  "codigo": 10003,
+  "titulo": "Casa do Pai",
+  "artista": "Aline Barros",
+  "genero": "GOSPEL"
+ },
+ {
+  "codigo": 10004,
+  "titulo": "Faz um Milagre em Mim",
+  "artista": "Regis Danese",
+  "genero": "GOSPEL"
+ },
+ {
+  "codigo": 10005,
+  "titulo": "Advogado Fiel",
+  "artista": "Bruna Karla",
+  "genero": "GOSPEL"
+ },
+ {
+  "codigo": 10006,
+  "titulo": "Galileu",
+  "artista": "Fernandinho",
+  "genero": "GOSPEL"
+ },
+ {
+  "codigo": 10007,
+  "titulo": "Deus Me Ama",
+  "artista": "Thalles Roberto",
+  "genero": "GOSPEL"
+ },
+ {
+  "codigo": 10008,
+  "titulo": "Aquieta Minh'alma",
+  "artista": "Ministério Zoe",
+  "genero": "GOSPEL"
+ },
+ {
+  "codigo": 10009,
+  "titulo": "Todavia Me Alegrarei",
+  "artista": "Samuel Messias",
+  "genero": "GOSPEL"
+ },
+ {
+  "codigo": 11001,
+  "titulo": "Detalhes",
+  "artista": "Roberto Carlos",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11002,
+  "titulo": "Emoções",
+  "artista": "Roberto Carlos",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11003,
+  "titulo": "Como É Grande o Meu Amor por Você",
+  "artista": "Roberto Carlos",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11004,
+  "titulo": "Amada Amante",
+  "artista": "Roberto Carlos",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11005,
+  "titulo": "Cama e Mesa",
+  "artista": "Roberto Carlos",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11006,
+  "titulo": "Sentado à Beira do Caminho",
+  "artista": "Erasmo Carlos",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11007,
+  "titulo": "Ternura",
+  "artista": "Wanderléa",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11008,
+  "titulo": "Garçom",
+  "artista": "Reginaldo Rossi",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11009,
+  "titulo": "Fuscão Preto",
+  "artista": "Almir Rogério",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11010,
+  "titulo": "Eu Não Sou Cachorro, Não",
+  "artista": "Waldick Soriano",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11011,
+  "titulo": "Pare de Tomar a Pílula",
+  "artista": "Odair José",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11012,
+  "titulo": "Eu Vou Tirar Você Desse Lugar",
+  "artista": "Odair José",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11013,
+  "titulo": "Fogo e Paixão",
+  "artista": "Wando",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11014,
+  "titulo": "Sonhos",
+  "artista": "Peninha",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 11015,
+  "titulo": "Você Não Vale Nada",
+  "artista": "Calcinha Preta",
+  "genero": "BREGA_ROMANTICA"
+ },
+ {
+  "codigo": 12001,
+  "titulo": "Ciranda, Cirandinha",
+  "artista": "Cantiga popular",
+  "genero": "FOLCLORE_INFANTIL"
+ },
+ {
+  "codigo": 12002,
+  "titulo": "Peixe Vivo",
+  "artista": "Cantiga popular",
+  "genero": "FOLCLORE_INFANTIL"
+ },
+ {
+  "codigo": 12003,
+  "titulo": "Escravos de Jó",
+  "artista": "Cantiga popular",
+  "genero": "FOLCLORE_INFANTIL"
+ },
+ {
+  "codigo": 12004,
+  "titulo": "O Cravo Brigou com a Rosa",
+  "artista": "Cantiga popular",
+  "genero": "FOLCLORE_INFANTIL"
+ },
+ {
+  "codigo": 12005,
+  "titulo": "Marcha Soldado",
+  "artista": "Cantiga popular",
+  "genero": "FOLCLORE_INFANTIL"
+ },
+ {
+  "codigo": 12006,
+  "titulo": "Atirei o Pau no Gato",
+  "artista": "Cantiga popular",
+  "genero": "FOLCLORE_INFANTIL"
+ },
+ {
+  "codigo": 12007,
+  "titulo": "Se Essa Rua Fosse Minha",
+  "artista": "Cantiga popular",
+  "genero": "FOLCLORE_INFANTIL"
+ },
+ {
+  "codigo": 12008,
+  "titulo": "Alecrim Dourado",
+  "artista": "Cantiga popular",
+  "genero": "FOLCLORE_INFANTIL"
+ },
+ {
+  "codigo": 12009,
+  "titulo": "Borboletinha",
+  "artista": "Cantiga popular",
+  "genero": "FOLCLORE_INFANTIL"
+ },
+ {
+  "codigo": 12010,
+  "titulo": "Pirulito Que Bate Bate",
+  "artista": "Cantiga popular",
+  "genero": "FOLCLORE_INFANTIL"
+ },
+ {
+  "codigo": 12011,
+  "titulo": "Sapo Não Lava o Pé",
+  "artista": "Cantiga popular",
+  "genero": "FOLCLORE_INFANTIL"
+ },
+ {
+  "codigo": 12012,
+  "titulo": "Samba Lelê",
+  "artista": "Cantiga popular",
+  "genero": "FOLCLORE_INFANTIL"
+ }
+]

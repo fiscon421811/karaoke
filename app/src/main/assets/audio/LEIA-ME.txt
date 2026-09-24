@@ -1,0 +1,4 @@
+Coloque aqui os áudios (playback) das músicas, nomeados pelo código:
+  1001.mp3, 2005.m4a, 12001.ogg ...
+Formatos aceitos: mp3, m4a, ogg, wav.
+Use apenas arquivos que você tem direito de usar.
