@@ -63,7 +63,7 @@ class PlayerViewModel(
         viewModelScope.launch {
             val musica = app.repositorio.porCodigo(codigo)
             val (letra, uriAudio) = withContext(Dispatchers.IO) {
-                app.fonteDeMidia.carregarLetra(codigo) to app.fonteDeMidia.uriDoAudio(codigo)
+                musica?.let(app.fonteDeMidia::carregarLetra) to app.fonteDeMidia.uriDoAudio(codigo)
             }
             if (uriAudio != null) {
                 player = ExoPlayer.Builder(app).build().apply {

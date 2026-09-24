@@ -1,7 +1,9 @@
 package br.com.karaokebrasil.ui
 
+import android.net.Uri
 import android.widget.Toast
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -34,7 +36,7 @@ private object Rotas {
     const val FAVORITAS = "favoritas"
     const val PLAYER = "player/{codigo}"
 
-    fun genero(genero: Genero) = "genero/${genero.name}"
+    fun genero(genero: Genero) = "genero/${Uri.encode(genero.id)}"
     fun player(codigo: Int) = "player/$codigo"
 }
 
@@ -50,6 +52,8 @@ fun KaraokeNavHost() {
 
     NavHost(navController = nav, startDestination = Rotas.INICIO) {
         composable(Rotas.INICIO) {
+            // Letras baixadas no player passam a exibir o selo "♪ LETRA".
+            LaunchedEffect(Unit) { vm.atualizarLetrasDisponiveis() }
             HomeScreen(
                 vm = vm,
                 onSelecionar = selecionar,
@@ -63,8 +67,8 @@ fun KaraokeNavHost() {
             Rotas.GENERO,
             arguments = listOf(navArgument("genero") { type = NavType.StringType }),
         ) { entrada ->
-            val genero = Genero.valueOf(checkNotNull(entrada.arguments?.getString("genero")))
-            GeneroScreen(genero = genero, vm = vm, onSelecionar = selecionar)
+            val generoId = checkNotNull(entrada.arguments?.getString("genero"))
+            GeneroScreen(generoId = generoId, vm = vm, onSelecionar = selecionar)
         }
         composable(Rotas.BUSCA) {
             BuscaScreen(vm = vm, onSelecionar = selecionar)

@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Musica::class], version = 1, exportSchema = true)
+@Database(entities = [Musica::class], version = 2, exportSchema = true)
 abstract class KaraokeDatabase : RoomDatabase() {
 
     abstract fun musicaDao(): MusicaDao

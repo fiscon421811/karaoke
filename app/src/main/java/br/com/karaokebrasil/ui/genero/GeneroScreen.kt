@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import br.com.karaokebrasil.data.Genero
 import br.com.karaokebrasil.data.Musica
 import br.com.karaokebrasil.ui.KaraokeViewModel
 import br.com.karaokebrasil.ui.componentes.GradeDeMusicas
@@ -12,15 +11,16 @@ import br.com.karaokebrasil.ui.componentes.Tela
 
 @Composable
 fun GeneroScreen(
-    genero: Genero,
+    generoId: String,
     vm: KaraokeViewModel,
     onSelecionar: (Musica) -> Unit,
 ) {
-    val fluxo = remember(genero) { vm.musicasDoGenero(genero) }
+    val fluxo = remember(generoId) { vm.musicasDoGenero(generoId) }
     val musicas by fluxo.collectAsStateWithLifecycle(initialValue = emptyList())
     val comLetra by vm.comLetra.collectAsStateWithLifecycle()
 
-    Tela(titulo = genero.nome, subtitulo = "${musicas.size} músicas") {
+    val nome = musicas.firstOrNull()?.genero?.nome.orEmpty()
+    Tela(titulo = nome, subtitulo = "${musicas.size} músicas") {
         GradeDeMusicas(musicas = musicas, comLetra = comLetra, onSelecionar = onSelecionar)
     }
 }

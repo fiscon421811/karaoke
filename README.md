@@ -5,10 +5,13 @@ com banco de músicas brasileiras organizado por gênero.
 
 ## Funcionalidades
 
-- **Catálogo por gênero** (166 músicas, 12 gêneros): Sertanejo, MPB, Samba, Pagode, Forró, Axé,
-  Rock Nacional, Bossa Nova, Funk, Gospel, Brega & Românticas, Folclore & Infantil.
-- **Banco de dados local (Room/SQLite)** importado de `assets/catalogo.json`.
-- Cada música tem um **número** (como nas máquinas de karaokê): `1001` = 1ª de Sertanejo, `7003` = 3ª de Rock…
+- **Catálogo por gênero** (238 músicas): Sertanejo, POP Nacional, Bregas, Sambas, Forró, Boleros,
+  MPB e Folclore & Infantil. **Gêneros e músicas são definidos no servidor**: dá para criar
+  gêneros e incluir músicas sem recompilar o app.
+- **Letras completas e sincronizadas** buscadas automaticamente no [LRCLIB](https://lrclib.net)
+  (base pública de letras `.lrc`), ou publicadas por você no servidor.
+- **Banco de dados local (Room/SQLite)** sincronizado com o catálogo a cada abertura.
+- Cada música tem um **número** (como nas máquinas de karaokê): `1001` = 1ª de Sertanejo, `2003` = 3ª de POP Nacional…
 - **Busca** por título, artista (sem precisar de acento: `forro` acha "Forró") ou número.
 - **Fila de músicas** para a festa, **Favoritas** e **Mais cantadas**.
 - **Player de karaokê** com letra sincronizada (formato `.lrc`): a linha atual vai sendo "pintada"
@@ -34,6 +37,20 @@ Ao escolher uma música, o app oferece:
 - **🎤 Cantar agora**: o player do próprio app, com letra sincronizada. Aparece quando a música
   tem letra (`.lrc`) disponível (selo **♪ LETRA** no cartão).
 
+## De onde vêm as letras
+
+Ao tocar uma música, o app procura a letra sincronizada nesta ordem e usa a primeira que achar:
+
+1. Arquivo na TV / no APK / no servidor (veja abaixo). **Uma letra sua sempre tem prioridade.**
+2. **LRCLIB**: busca automática por título + artista em `https://lrclib.net`. A letra baixada
+   fica guardada na TV (depois disso a música ganha o selo **♪ LETRA** e funciona sem internet).
+
+Se uma música não estiver no LRCLIB, você pode enviar a letra sincronizada para lá (é aberto
+à comunidade) ou publicá-la no servidor.
+
+> A sincronia das letras do LRCLIB segue a **gravação original** da música. Para cantar com
+> áudio, use o playback/gravação correspondente (veja "Áudios").
+
 ## Letras e áudios no servidor
 
 O app procura a letra/áudio de cada música, pelo **número**, nesta ordem:
@@ -58,6 +75,10 @@ Para publicar músicas no servidor, **sem recompilar o app**:
 > servidor só o que você tem direito de distribuir: cantigas de domínio público, gravações
 > próprias ou conteúdo licenciado (ex.: comprado de distribuidoras de karaokê). As 8 cantigas de
 > **Folclore & Infantil** (`12001`–`12008`) já estão no servidor como exemplo.
+>
+> Para uso em casa, com a família, o LRCLIB atende bem. Para **uso comercial ou público**
+> (bares, eventos, venda do app) é preciso licenciar as músicas: execução pública pelo
+> **ECAD**, letras e playbacks com as editoras/distribuidoras de karaokê.
 
 Exemplo de `.lrc` (dá para criar no *LRC Maker* ou em outros editores de letra sincronizada):
 
@@ -68,17 +89,20 @@ Exemplo de `.lrc` (dá para criar no *LRC Maker* ou em outros editores de letra 
 [00:08.50]Vamos todos cirandar
 ```
 
-## Adicionar músicas ao catálogo
+## Adicionar gêneros e músicas (sem recompilar)
 
-O catálogo é gerado por um script Python:
+O catálogo fica em `servidor/catalogo.json`, gerado por um script Python:
 
-1. Edite as listas em `ferramentas/gerar_catalogo.py` (acrescente **no fim** da lista do gênero,
-   para não alterar os números existentes).
+1. Edite `ferramentas/gerar_catalogo.py`:
+   - **música nova**: acrescente `("Título", "Artista")` **no fim** da lista do gênero
+     (para não mudar os números das existentes);
+   - **gênero novo**: acrescente um item em `GENEROS` com `id`, `nome`, `cor` e um `prefixo`
+     ainda não usado (ex.: `{"id": "gospel", "nome": "Gospel", "cor": "#4CAF50", "prefixo": 8, "musicas": [...]}`).
 2. Rode `python3 ferramentas/gerar_catalogo.py`.
-3. Recompile o app — as músicas novas entram no banco na próxima abertura, sem perder
-   favoritas nem contagens.
+3. Faça commit e push. Na próxima abertura, o app baixa o catálogo novo, sem perder
+   favoritas nem contagens. A letra de cada música nova é buscada no LRCLIB automaticamente.
 
-Para criar um gênero novo, adicione-o também em `data/Genero.kt` (com um prefixo novo).
+O script também atualiza a cópia embutida no APK (`assets/catalogo.json`), usada quando não há internet.
 
 ## Abrindo no IntelliJ IDEA
 

@@ -29,7 +29,9 @@ class KaraokeViewModel(application: Application) : AndroidViewModel(application)
     private val fila = app.fila
 
     val musicasPorGenero: StateFlow<Map<Genero, List<Musica>>> = repositorio.todas()
-        .map { musicas -> musicas.groupBy { it.genero }.toSortedMap() }
+        .map { musicas ->
+            musicas.groupBy { it.genero }.toSortedMap(compareBy<Genero> { it.ordem }.thenBy { it.id })
+        }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyMap())
 
     val maisCantadas: StateFlow<List<Musica>> = repositorio.maisCantadas()
@@ -61,7 +63,7 @@ class KaraokeViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun musicasDoGenero(genero: Genero): Flow<List<Musica>> = repositorio.porGenero(genero)
+    fun musicasDoGenero(generoId: String): Flow<List<Musica>> = repositorio.porGenero(generoId)
 
     fun alternarFavorita(musica: Musica) {
         viewModelScope.launch { repositorio.alternarFavorita(musica.codigo) }

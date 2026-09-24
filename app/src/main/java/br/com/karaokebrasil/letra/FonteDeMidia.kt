@@ -4,10 +4,10 @@ import android.content.Context
 import android.net.Uri
 import android.util.Log
 import br.com.karaokebrasil.BuildConfig
+import br.com.karaokebrasil.data.Musica
+import br.com.karaokebrasil.rede.Http
 import org.json.JSONObject
 import java.io.File
-import java.net.HttpURLConnection
-import java.net.URL
 
 /**
  * Localiza letra (.lrc) e áudio de cada música pelo código, nesta ordem:
@@ -16,6 +16,7 @@ import java.net.URL
  *    `Android/data/br.com.karaokebrasil/files/karaoke/<codigo>.lrc` e `<codigo>.mp3`
  * 2. Assets do APK: `assets/letras/<codigo>.lrc` e `assets/audio/<codigo>.mp3`
  * 3. Servidor ([BuildConfig.SERVIDOR_MIDIA_URL]), listado em `midias.json`.
+ * 4. Só letras: busca automática no [Lrclib] (guardada no aparelho após a 1ª vez).
  *
  * Todas as funções fazem E/S (disco/rede): chame fora da thread principal.
  */
@@ -31,14 +32,27 @@ class FonteDeMidia(private val context: Context) {
     val pastaExterna: File?
         get() = context.getExternalFilesDir(PASTA_EXTERNA)
 
-    fun carregarLetra(codigo: Int): Letra? {
+    private val pastaLetrasOnline: File
+        get() = File(context.filesDir, PASTA_LETRAS_ONLINE).apply { mkdirs() }
+
+    fun carregarLetra(musica: Musica): Letra? {
+        val codigo = musica.codigo
         val nome = "$codigo.lrc"
-        val texto = File(pastaExterna, nome).takeIf { it.isFile }?.readText()
-            ?: runCatching {
+        val candidatos = sequence {
+            File(pastaExterna, nome).takeIf { it.isFile }?.let { yield(it.readText()) }
+            runCatching {
                 context.assets.open("$PASTA_LETRAS/$nome").bufferedReader().use { it.readText() }
-            }.getOrNull()
-            ?: baixarLetra(codigo)
-        return texto?.let(LrcParser::parse)?.takeIf { it.linhas.isNotEmpty() }
+            }.getOrNull()?.let { yield(it) }
+            baixarLetra(codigo)?.let { yield(it) }
+            File(pastaLetrasOnline, nome).takeIf { it.isFile }?.let { yield(it.readText()) }
+            Lrclib.buscarLetraSincronizada(musica.titulo, musica.artista)?.let { texto ->
+                runCatching { File(pastaLetrasOnline, nome).writeText(texto) }
+                yield(texto)
+            }
+        }
+        return candidatos
+            .map(LrcParser::parse)
+            .firstOrNull { it.linhas.isNotEmpty() }
     }
 
     fun uriDoAudio(codigo: Int): Uri? {
@@ -57,7 +71,8 @@ class FonteDeMidia(private val context: Context) {
     fun codigosComLetra(): Set<Int> {
         val nosAssets = context.assets.list(PASTA_LETRAS).orEmpty().asSequence()
         val naPasta = pastaExterna?.list().orEmpty().asSequence()
-        val locais = (nosAssets + naPasta)
+        val online = pastaLetrasOnline.list().orEmpty().asSequence()
+        val locais = (nosAssets + naPasta + online)
             .filter { it.endsWith(".lrc") }
             .mapNotNull { it.removeSuffix(".lrc").toIntOrNull() }
         val remotos = indice().filterValues { it.letra != null }.keys
@@ -67,7 +82,7 @@ class FonteDeMidia(private val context: Context) {
     private fun baixarLetra(codigo: Int): String? {
         val caminho = indice()[codigo]?.letra ?: return null
         val cache = File(context.cacheDir, "$PASTA_LETRAS/$codigo.lrc")
-        return baixarTexto(resolver(caminho))
+        return Http.baixarTexto(resolver(caminho))
             ?.also { texto -> runCatching { cache.parentFile?.mkdirs(); cache.writeText(texto) } }
             ?: cache.takeIf { it.isFile }?.readText()
     }
@@ -81,7 +96,7 @@ class FonteDeMidia(private val context: Context) {
         if (servidor.isBlank()) return emptyMap()
 
         val cache = File(context.filesDir, ARQUIVO_INDICE)
-        val baixado = baixarTexto(resolver(ARQUIVO_INDICE))
+        val baixado = Http.baixarTexto(resolver(ARQUIVO_INDICE))
         if (baixado != null) runCatching { cache.writeText(baixado) }
         val json = baixado ?: cache.takeIf { it.isFile }?.readText() ?: return emptyMap()
 
@@ -108,25 +123,13 @@ class FonteDeMidia(private val context: Context) {
     private fun resolver(caminho: String): String =
         if (caminho.startsWith("http://") || caminho.startsWith("https://")) caminho else servidor + caminho
 
-    private fun baixarTexto(url: String): String? = runCatching {
-        val conexao = URL(url).openConnection() as HttpURLConnection
-        try {
-            conexao.connectTimeout = TIMEOUT_MS
-            conexao.readTimeout = TIMEOUT_MS
-            if (conexao.responseCode != HttpURLConnection.HTTP_OK) return@runCatching null
-            conexao.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }
-        } finally {
-            conexao.disconnect()
-        }
-    }.onFailure { Log.w(TAG, "Falha ao baixar $url", it) }.getOrNull()
-
     private companion object {
         const val TAG = "FonteDeMidia"
         const val PASTA_EXTERNA = "karaoke"
         const val PASTA_LETRAS = "letras"
+        const val PASTA_LETRAS_ONLINE = "letras_online"
         const val PASTA_AUDIO = "audio"
         const val ARQUIVO_INDICE = "midias.json"
-        const val TIMEOUT_MS = 8_000
         val EXTENSOES_AUDIO = listOf("mp3", "m4a", "ogg", "wav")
     }
 }

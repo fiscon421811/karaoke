@@ -92,7 +92,7 @@ fun PlayerScreen(
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             val letra = estado.letra
             when {
-                estado.carregando -> Text("Carregando…", fontSize = 28.sp)
+                estado.carregando -> Text("Buscando a letra…", fontSize = 28.sp)
                 letra != null -> AreaDaLetra(letra, estado.posicaoMs)
                 estado.temAudio -> Text("♪ Tocando sem letra ♪", fontSize = 40.sp, color = Destaque)
                 else -> SemLetra(estado.musica)
@@ -173,13 +173,12 @@ private fun LinhaSecundaria(texto: String, tamanho: TextUnit, alpha: Float = 0.7
 @Composable
 private fun SemLetra(musica: Musica?) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text("Letra não instalada", fontSize = 40.sp, fontWeight = FontWeight.Bold)
+        Text("Letra sincronizada não encontrada", fontSize = 40.sp, fontWeight = FontWeight.Bold)
         Spacer(Modifier.height(16.dp))
         Text(
-            text = "Copie os arquivos ${musica?.codigo ?: "<codigo>"}.lrc (letra) e " +
-                "${musica?.codigo ?: "<codigo>"}.mp3 (áudio) para\n" +
-                "Android/data/br.com.karaokebrasil/files/karaoke/\n" +
-                "ou coloque-os em app/src/main/assets/letras e assets/audio.",
+            text = "Não achamos a letra no servidor nem no LRCLIB (verifique a internet).\n" +
+                "Publique servidor/letras/${musica?.codigo ?: "<numero>"}.lrc no GitHub ou envie a letra\n" +
+                "sincronizada para lrclib.net — depois é só tentar de novo.",
             fontSize = 20.sp,
             color = TextoSecundario,
             textAlign = TextAlign.Center,

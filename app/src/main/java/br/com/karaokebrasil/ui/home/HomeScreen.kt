@@ -108,7 +108,7 @@ fun HomeScreen(
         }
 
         porGenero.forEach { (genero, musicas) ->
-            item(key = genero.name) {
+            item(key = genero.id) {
                 LinhaDeMusicas(
                     titulo = genero.nome,
                     cor = Color(genero.cor),

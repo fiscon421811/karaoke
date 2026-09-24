@@ -1,5 +1,6 @@
 package br.com.karaokebrasil.data
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
@@ -7,13 +8,13 @@ import java.text.Normalizer
 
 @Entity(
     tableName = "musicas",
-    indices = [Index("genero"), Index("termoBusca")],
+    indices = [Index("genero_id"), Index("termoBusca")],
 )
 data class Musica(
     @PrimaryKey val codigo: Int,
     val titulo: String,
     val artista: String,
-    val genero: Genero,
+    @Embedded(prefix = "genero_") val genero: Genero,
     /** Título + artista sem acentos e em minúsculas, usado na busca. */
     val termoBusca: String = normalizar("$titulo $artista"),
     val favorita: Boolean = false,

@@ -57,26 +57,18 @@ fun OpcoesMusicaDialog(
                 textAlign = TextAlign.Center,
             )
             Text(text = musica.artista, color = TextoSecundario, fontSize = 18.sp)
-            if (!temLetra) {
-                Text(
-                    text = "Letra não disponível no app — cante com um vídeo de karaokê do YouTube.",
-                    color = TextoSecundario,
-                    fontSize = 13.sp,
-                    textAlign = TextAlign.Center,
-                )
-            }
+            Text(
+                text = if (temLetra) "♪ Letra sincronizada disponível" else "A letra será buscada na internet (LRCLIB)",
+                color = TextoSecundario,
+                fontSize = 13.sp,
+                textAlign = TextAlign.Center,
+            )
             Spacer(Modifier.height(8.dp))
-            if (temLetra) {
-                Button(onClick = onCantar, modifier = Modifier.fillMaxWidth().focusRequester(foco)) {
-                    Text("🎤  Cantar agora")
-                }
-                OutlinedButton(onClick = onCantarNoYoutube, modifier = Modifier.fillMaxWidth()) {
-                    Text("▶  Cantar com vídeo do YouTube")
-                }
-            } else {
-                Button(onClick = onCantarNoYoutube, modifier = Modifier.fillMaxWidth().focusRequester(foco)) {
-                    Text("▶  Cantar com vídeo do YouTube")
-                }
+            Button(onClick = onCantar, modifier = Modifier.fillMaxWidth().focusRequester(foco)) {
+                Text("🎤  Cantar agora")
+            }
+            OutlinedButton(onClick = onCantarNoYoutube, modifier = Modifier.fillMaxWidth()) {
+                Text("▶  Cantar com vídeo do YouTube")
             }
             OutlinedButton(onClick = onAdicionarNaFila, modifier = Modifier.fillMaxWidth()) {
                 Text("➕  Adicionar à fila")
